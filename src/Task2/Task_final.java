@@ -17,7 +17,6 @@ public class Task_final {
         messageAboutSize(sizeCheck(data, requiredSize));
         if (sizeCheck(data, requiredSize) == 0) {
             try {
-                System.out.println(getGender(data));
                 name = getName(data);
                 dateBirthday = getDate(data);
                 number = getNumber(data);
