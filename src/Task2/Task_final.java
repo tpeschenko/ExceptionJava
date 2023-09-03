@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Task_final {
     public static void main(String[] args) {
-        String str = "12.04.1990,Иванов Иван Иванович,375237782342,f";
+        String str = "12.04.1990,375237782342,m,Иванов Иван Иванович";
         String[] data = str.split(",");
         String[] dataCorrectPosition = new String[4];
         int requiredSize = 4;
@@ -34,13 +34,7 @@ public class Task_final {
                     e.printStackTrace();
                 }
 
-            } catch (InvalidNameFormat e) {
-                e.printStackTrace();
-            } catch (InvalidDateFormat e){
-                e.printStackTrace();
-            }catch (InvalidNumberFormat e){
-                e.printStackTrace();
-            }catch (InvalidGenderFormat e){
+            } catch (UnsupportedOperationException e) {
                 e.printStackTrace();
             }
         }
@@ -115,7 +109,7 @@ public class Task_final {
     public static String getGender(String[] array){
         String gender;
         for (String i : array){
-            if(i.matches("\\w")){
+            if(i.matches("\\w") && i.equals("f") | i.equals("m")){
                 gender = i;
                 return gender;
             }

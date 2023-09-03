@@ -1,7 +1,13 @@
 package Task2;
 
 public class InvalidNumberFormat extends UnsupportedOperationException{
-    public String toString(){
-        return "Неверный формат номера";
+    private static final String MESSAGE = "Неверный формат Номера";
+
+    public InvalidNumberFormat(){
+        this(MESSAGE);
+    }
+
+    public InvalidNumberFormat(String message) {
+        super(message);
     }
 }

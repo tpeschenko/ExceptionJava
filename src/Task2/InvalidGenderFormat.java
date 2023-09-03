@@ -1,7 +1,14 @@
 package Task2;
 
 public class InvalidGenderFormat extends UnsupportedOperationException{
-    public String toString(){
-        return "Неверный формат пола";
+    private static final String MESSAGE = "Неверный формат пола";
+    public InvalidGenderFormat() {
+        this(MESSAGE);
     }
+
+    public InvalidGenderFormat(String message) {
+        super(message);
+    }
+
+
 }
