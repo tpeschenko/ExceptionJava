@@ -3,6 +3,10 @@
 public class Main {
     public static void main(String[] args) {
 
+        String a = "12423";
+        boolean b;
 
+        b = a.matches("[0-9]+");
+        System.out.println(b);
     }
 }
