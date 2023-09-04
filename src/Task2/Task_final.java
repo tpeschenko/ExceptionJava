@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Task_final {
     public static void main(String[] args) {
-        String str = "12.04.1991,375237756546456482342,m,Петров Иван Иванович";
+        String str = "12.04.1991,375237756546456482342,m,Иванов Иван Иванович";
         String[] data = str.split(",");
         String[] dataCorrectPosition = new String[4];
         int requiredSize = 4;
@@ -125,27 +125,25 @@ public class Task_final {
         String fileName = array[0];
         String[] array2 = fileName.split(" ");
         String surname = array2[0];
-        File file = new File("C:\\Users\\User\\ExceptionJava\\src\\Task2\\" + surname + ".txt");
+        String fileWay = "C:\\Users\\User\\ExceptionJava\\src\\Task2\\";
 
+        File file = new File(fileWay + surname + ".txt");
         if (!file.exists()) {
-
             try (FileWriter writer = new FileWriter
-                    ("C:\\Users\\User\\ExceptionJava\\src\\Task2\\" + surname + ".txt", false)) {
+                    (fileWay + surname + ".txt", true)) {
                 for (String i : array) {
                     writer.write(i);
                     writer.write("\n");
                 }
             }
+
         } else {
             try (FileWriter writer = new FileWriter
-                    ("C:\\Users\\User\\ExceptionJava\\src\\Task2\\" + surname + ".txt", true)) {
+                    (fileWay + surname + ".txt", true)) {
                 for (String i : array) {
                     writer.write(i);
                     writer.write("\n");
-
                 }
-
-
             }
 
 
