@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Task_final {
     public static void main(String[] args) {
-        String str = "12.04.1991,375237756546456482342,m,Смирнов Иван Иванович";
+        String str = "12.04.1991,375237756546456482342,m,Иванов Иван Иванович";
         String[] data = str.split(",");
         String[] dataCorrectPosition = new String[4];
         int requiredSize = 4;
@@ -129,10 +129,16 @@ public class Task_final {
 
         try (FileWriter writer = new FileWriter
                 (fileWay + surname + ".txt", true)) {
-            for (String i : array) {
-                writer.write(i);
-                writer.write("\n");
+            for (int i = 0; i < array.length; i++) {
+                if(i == 3){
+                    writer.write(array[i]);
+                }else{
+                    writer.write(array[i]);
+                    writer.write(", ");
+                }
+
             }
+            writer.write("\n");
 
 
 
