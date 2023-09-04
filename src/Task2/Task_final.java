@@ -1,11 +1,12 @@
 package Task2;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Task_final {
     public static void main(String[] args) {
-        String str = "12.04.1990,375237782342,m,Иванов Иван Иванович";
+        String str = "12.04.1991,375237756546456482342,m,Петров Иван Иванович";
         String[] data = str.split(",");
         String[] dataCorrectPosition = new String[4];
         int requiredSize = 4;
@@ -30,7 +31,7 @@ public class Task_final {
                 try {
                     fileWriterAdd(dataCorrectPosition);
 
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
@@ -96,20 +97,22 @@ public class Task_final {
         }
         throw new InvalidDateFormat();
     }
-    public static String getNumber(String[] array){
+
+    public static String getNumber(String[] array) {
         String number;
-        for (String i : array){
-            if(i.matches("[0-9]+")){
+        for (String i : array) {
+            if (i.matches("[0-9]+")) {
                 number = i;
                 return number;
             }
         }
         throw new InvalidNumberFormat();
     }
-    public static String getGender(String[] array){
+
+    public static String getGender(String[] array) {
         String gender;
-        for (String i : array){
-            if(i.matches("\\w") && i.equals("f") | i.equals("m")){
+        for (String i : array) {
+            if (i.matches("\\w") && i.equals("f") | i.equals("m")) {
                 gender = i;
                 return gender;
             }
@@ -117,19 +120,35 @@ public class Task_final {
         throw new InvalidGenderFormat();
 
     }
-    public static void fileWriterAdd(String[] array) throws IOException{
+
+    public static void fileWriterAdd(String[] array) throws IOException {
         String fileName = array[0];
         String[] array2 = fileName.split(" ");
-
         String surname = array2[0];
-        try (FileWriter writer = new FileWriter
-                ("C:\\Users\\User\\ExceptionJava\\src\\Task2\\"+surname+".txt", false)){
+        File file = new File("C:\\Users\\User\\ExceptionJava\\src\\Task2\\" + surname + ".txt");
 
-            for(String i: array){
-                writer.write(i);
-                writer.write("\n");
+        if (!file.exists()) {
+
+            try (FileWriter writer = new FileWriter
+                    ("C:\\Users\\User\\ExceptionJava\\src\\Task2\\" + surname + ".txt", false)) {
+                for (String i : array) {
+                    writer.write(i);
+                    writer.write("\n");
+                }
             }
-        }
+        } else {
+            try (FileWriter writer = new FileWriter
+                    ("C:\\Users\\User\\ExceptionJava\\src\\Task2\\" + surname + ".txt", true)) {
+                for (String i : array) {
+                    writer.write(i);
+                    writer.write("\n");
 
+                }
+
+
+            }
+
+
+        }
     }
 }
